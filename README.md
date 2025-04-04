@@ -14,7 +14,7 @@ This project contains both the **backend** and **frontend** components:
 - **User Authentication**: Log in via a regular account or using Google OAuth.
 - **Zoom Integration**: Create and manage Zoom meetings directly from the app.
 - **Responsive Design**: Tailored for both desktop and mobile views.
-- **Notifications**: Real-time feedback to the users with React-Toastify.
+- **Automated Email Notifications**: Send email notifications using **Nodemailer** when the scheduled meeting time arrives, powered by **Agenda** for background task scheduling.
 
 ## 📌 Tech Stack
 
@@ -33,6 +33,8 @@ This project contains both the **backend** and **frontend** components:
 - **JWT**
 - **Multer**
 - **Zoom API Integration**
+- **Nodemailer**
+- **Agenda**
 
 ## 📚 API Documentation
 
@@ -69,6 +71,12 @@ ZOOM_REDIRECT_URI="http://localhost:8000/api/zoom/callback"
 # JWT Configuration
 JWT_SECRET_KEY=""
 JWT_EXPIRE_IN="15d"
+
+# sending email
+EMAIL_FROM=""
+EMAIL_USER=""
+EMAIL_PASSWORD=""
+
 ```
 
 ## 🛠 Tech Setup
