@@ -64,3 +64,25 @@ ZOOM_REDIRECT_URI="http://localhost:8000/api/zoom/callback"
 JWT_SECRET_KEY=""
 JWT_EXPIRE_IN="15d"
 ```
+
+## 🛠 Tech Setup
+
+### 🚀 Running the Backend
+
+To run the backend server, I used **nodemon** to automatically restart the server during development whenever file changes are made. Additionally, **nodemon** is configured to read environment variables from the `.env` file to manage different configurations for the backend.
+
+In the `package.json`, the following script is used:
+
+```json
+"scripts": {
+  "start": "nodemon --env-file .env ./server/server.js"
+}
+```
+
+### 🔧 Installing **nodemon** Globally
+
+If **nodemon** is not installed globally on your machine, you can install it using the following command:
+
+```bash
+npm install -g nodemon
+```
