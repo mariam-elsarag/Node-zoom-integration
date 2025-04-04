@@ -1,10 +1,12 @@
 import express from "express";
 import multer from "multer";
 import { createMeeting } from "./meeting.controller.js";
+import { authorized, protect } from "../../middleware/authorization.js";
 
 const router = express.Router();
 const upload = multer();
 
-router.route("/meet").post(upload.none(), createMeeting);
+router.use(protect(), authorized("user"));
+router.route("/zoom").post(upload.none(), createMeeting);
 
 export default router;

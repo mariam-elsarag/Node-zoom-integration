@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meeting Invitation</title>
+  <style>
+    :root {
+      --color-white-80: #ecf0ff;
+      --color-grey-100: #c5d0e6;
+      --color-blue-50: #c9ddff;
+      --color-blue-100: #2386ff;
+      --color-blue-200: #0e78f9;
+      --color-blue-700: #1e2757;
+      --color-blue-800: #252a41;
+      --color-blue-900: #1c1f2e;
+      --color-blue-950: #161925;
+    }
+
+    body,
+    .body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      color: #c5d0e6 !important;
+      background-color: #161925 !important;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 80%;
+      margin: auto;
+      background-color: #1c1f2e !important;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header .logo .logo_video_icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #c9ddff, #0e78f9) !important;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header .logo .logo_video_icon svg {
+      fill: var(--color-white-80);
+    }
+
+    .header .logo_text {
+      font-size: 24px;
+      font-weight: 600;
+      color: #ecf0ff !important;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .content {
+      background-color: #252a41 !important;
+      padding: 20px;
+      border-radius: 8px;
+      color: #ecf0ff !important;
+    }
+
+    .content h2 {
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #ecf0ff !important;
+    }
+
+    .content p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #c5d0e6 !important;
+      margin-bottom: 15px;
+    }
+
+    .content p strong {
+      font-weight: 700;
+      color: #ecf0ff !important;
+    }
+
+    .content a {
+      color: #fff !important;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .button {
+      background: #0e78f9 !important;
+      color: #ecf0ff !important;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 5px;
+      text-align: center;
+      display: inline-block;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .button:hover {
+      background: #2386ff !important;
+      transition: all 0.3s ease-in-out;
+    }
+
+    @media screen and (max-width: 768px) {
+      .container {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container body">
+    <header class="header">
+      <div class="logo">
+
+        <span class="logo_text">Meeting</span>
+      </div>
+    </header>
+
+    <div class="content">
+      <h2>You're Invited to a Meeting!</h2>
+      <p>Hi {{name}},</p>
+      <p>We are excited to invite you to a scheduled meeting! Below, you'll find the details and the Zoom link to join:
+      </p>
+
+      <p><strong>Meeting Topic:</strong> {{meetingTopic}}</p>
+      <p><strong>Scheduled Time:</strong> {{scheduledTime}}</p>
+
+      <p><strong>Join Zoom Meeting:</strong></p>
+      <a href="{{zoomLink}}" class="button">Join Meeting</a>
+
+      <p>If the link does not open automatically, please copy and paste it into your browser.</p>
+
+      <p>If you have any issues joining, feel free to reply to this email.</p>
+
+      <p>Looking forward to your participation!</p>
+
+      <p>Thanks,</p>
+      <p>Your Meeting Team</p>
+    </div>
+  </div>
+</body>
+
+</html>

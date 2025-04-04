@@ -26,7 +26,7 @@ app.use(mongoSanitize());
 
 // routes
 app.use("/api/auth", authRoute);
-app.use("/api/zoom", meetingRoute);
+app.use("/api/meet", meetingRoute);
 
 // handle wrong routes
 app.all("*", (req, res, next) => {
