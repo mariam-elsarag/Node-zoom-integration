@@ -34,6 +34,12 @@ This project contains both the **backend** and **frontend** components:
 - **Multer**
 - **Zoom API Integration**
 
+## 📚 API Documentation
+
+You can access the full API documentation via Postman using the link below 👇:
+
+🔗 [View API Docs on Postman](https://documenter.getpostman.com/view/39898064/2sB2cU9hVn)
+
 ## 🧪 Environment Variables
 
 The backend application requires the following environment variables to be set in your `.env` file:
