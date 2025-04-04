@@ -1,0 +1,14 @@
+To do list
+_____________
+1- need to schedule meet when time to meet to send email for user to tell hime about meeting time and check if i can do real time notification for it
+2- check how to do real time to show start meet when meet time come to be more like real time 
+3- login, and registeration
+4- filter meeting for users upcoming and pervious one
+
+
+
+Tasks:
+_____________
+1- Auth (login, registeration)
+2- generate token 
+3- authorize users
