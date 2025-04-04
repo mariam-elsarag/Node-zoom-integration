@@ -16,7 +16,7 @@ This project contains both the **backend** and **frontend** components:
 - **Responsive Design**: Tailored for both desktop and mobile views.
 - **Notifications**: Real-time feedback to the users with React-Toastify.
 
-## 🛠 Tech Stack
+## 📌 Tech Stack
 
 ### 🌐 Frontend:
 
@@ -25,7 +25,7 @@ This project contains both the **backend** and **frontend** components:
 - **Tailwind CSS**
 - **React-Toastify**
 
-### 🖥 Backend:
+### 💻 Backend:
 
 - **Express.js**
 - **MongoDB & Mongoose**
@@ -34,7 +34,7 @@ This project contains both the **backend** and **frontend** components:
 - **Multer**
 - **Zoom API Integration**
 
-## 📌 Environment Variables
+## 🧪 Environment Variables
 
 The backend application requires the following environment variables to be set in your `.env` file:
 
