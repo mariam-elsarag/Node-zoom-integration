@@ -1,40 +1,40 @@
 # Zoom Integration
 
-## Overview
+## 📋 Overview
 
-**Zoom Integration** is a web application that seamlessly integrates Zoom, enabling users to log in either with a regular account or through Google OAuth. It offers functionalities for managing Zoom meetings, authenticating users, and creating a smooth user experience for both admins and regular users.
+**Zoom Integration** is a web application that seamlessly integrates Zoom, enabling users to log in either with a regular account or through Google OAuth. It offers functionalities for managing Zoom meetings, authenticating users, and creating a smooth user experience.
 
 This project contains both the **backend** and **frontend** components:
 
 - **Frontend**: A modern React app built with TypeScript, styled using Tailwind CSS, and provides a seamless user experience with the help of React-Toastify for notifications.
 - **Backend**: A robust Express server using MongoDB (Mongoose), JWT authentication, and Zoom OAuth integration.
 
-## Features
+## ✨ Features
 
 - **User Authentication**: Log in via a regular account or using Google OAuth.
 - **Zoom Integration**: Create and manage Zoom meetings directly from the app.
 - **Responsive Design**: Tailored for both desktop and mobile views.
 - **Notifications**: Real-time feedback to the users with React-Toastify.
 
-## Tech Stack
+## 🛠 Tech Stack
 
-### Frontend:
+### 🌐 Frontend:
 
-- **React**: For building the user interface.
-- **TypeScript**: For type safety and better development experience.
-- **Tailwind CSS**: For rapid and customizable styling.
-- **React-Toastify**: For elegant and easy-to-use notifications.
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **React-Toastify**
 
-### Backend:
+### 🖥 Backend:
 
-- **Express.js**: For building the server-side application.
-- **MongoDB & Mongoose**: For data storage and schema management.
-- **Passport.js & Google OAuth2**: For user authentication via Google.
-- **JWT**: For secure user authentication and token management.
-- **Multer**: For handling file uploads.
-- **Zoom API Integration**: To manage Zoom meetings and authentication.
+- **Express.js**
+- **MongoDB & Mongoose**
+- **Passport.js & Google OAuth2**
+- **JWT**
+- **Multer**
+- **Zoom API Integration**
 
-## Environment Variables
+## 📌 Environment Variables
 
 The backend application requires the following environment variables to be set in your `.env` file:
 
