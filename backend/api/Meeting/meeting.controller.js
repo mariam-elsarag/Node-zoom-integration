@@ -1,10 +1,14 @@
 import axios from "axios";
+// model
+import Meeting from "./meeting.model.js";
+
+// utils
+import agenda from "../../utils/agenda.js";
+import Email from "../../utils/sendEmail.js";
 import appErrors from "../../utils/appErrors.js";
+import apiFeatures from "../../utils/apiFeatures.js";
 import asyncWrapper from "../../utils/asyncWrapper.js";
 import serializeBody from "../../utils/serializeBody.js";
-import Meeting from "./meeting.model.js";
-import Email from "../../utils/sendEmail.js";
-import agenda from "../../utils/agenda.js";
 
 // Get Zoom Access Token
 const getZoomAccessToken = async () => {
@@ -164,6 +168,43 @@ export const createMeeting = asyncWrapper(async (req, res, next) => {
     );
     return next(new appErrors("Failed to create Zoom meeting", 500));
   }
+});
+
+// meeting list
+export const meetingList = asyncWrapper(async (req, res, next) => {
+  const user = req.user._id;
+  const { status } = req.query;
+
+  const now = new Date();
+
+  const timeFilter =
+    status === "upcoming"
+      ? { $gte: now }
+      : status === "previous"
+      ? { $lte: now }
+      : {};
+
+  const features = new apiFeatures(
+    Meeting.find({
+      user,
+      start_time: timeFilter,
+    }),
+    req.query
+  ).paginate(12);
+
+  const meetings = await features.getPaginations(Meeting, req);
+
+  const timeNow = Date.now();
+  const THIRTY_MIN = 30 * 60 * 1000;
+  meetings.results = meetings.results.map((meet) => {
+    const startTime = new Date(meet.start_time).getTime();
+    if (startTime < timeNow || startTime > timeNow + THIRTY_MIN) {
+      meet.zoom_url = null;
+    }
+    return meet;
+  });
+
+  res.status(200).json(meetings);
 });
 
 agenda.define("send zoom url", async (job) => {

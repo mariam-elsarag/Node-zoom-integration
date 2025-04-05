@@ -11,6 +11,7 @@ import authRoute from "./api/Auth/auth.route.js";
 
 import meetingRoute from "./api/Meeting/meeting.route.js";
 import globalErrors from "./middleware/globalErrors.js";
+import appErrors from "./utils/appErrors.js";
 
 const app = express();
 
