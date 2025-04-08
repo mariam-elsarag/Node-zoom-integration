@@ -4,10 +4,12 @@ import { emailPattern } from "../../utils/validation.js";
 const isStartTimeInFuture = (value) => {
   if (value) {
     const currentTime = new Date();
-    return value > currentTime;
+    const startTime = new Date(value);
+    return startTime >= currentTime;
   }
   return false;
 };
+
 const meetingSchema = new mongoose.Schema(
   {
     user: {
