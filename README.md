@@ -20,10 +20,8 @@ This project contains both the **backend** and **frontend** components:
 
 Take a quick look at how the app works in action! From logging in to creating meetings — it's all here:
 
-<video width="100%" controls>
-  <source src="./assets/demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+![Video Demo](./assets/Demo.gif)
+
 ## 📌 Tech Stack
 
 ### 🌐 Frontend:
