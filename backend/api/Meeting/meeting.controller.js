@@ -56,6 +56,9 @@ export const createMeeting = asyncWrapper(async (req, res, next) => {
   if (filterdData.type === 2 && !filterdData.duration) {
     return next(new appErrors("Duration is required", 400));
   }
+  if (filterdData.type === 2 && !filterdData.start_time) {
+    return next(new appErrors("Start time is required", 400));
+  }
 
   if (filterdData?.agenda?.length > 2000) {
     return next(
@@ -81,7 +84,7 @@ export const createMeeting = asyncWrapper(async (req, res, next) => {
 
   // check if user has already meet at this time will have at least half hour between two meeting
 
-  if (filterdData.type === 2) {
+  if (filterdData.type == 2) {
     const newStartTime = new Date(filterdData.start_time);
     const thirtyMinutesInMillis = 30 * 60 * 1000;
     const userMeetings = await Meeting.find({
@@ -119,7 +122,14 @@ export const createMeeting = asyncWrapper(async (req, res, next) => {
     const meetingResponse = await axios.post(
       "https://api.zoom.us/v2/users/me/meetings",
       {
-        ...filterdData,
+        topic: filterdData.topic,
+        type: filterdData.type, // 1 = instant, 2 = scheduled
+        agenda: filterdData.agenda,
+        duration: filterdData.duration || 30,
+        start_time:
+          filterdData.type === 2
+            ? filterdData.start_time
+            : new Date().toISOString(),
         host_email: user.email,
         default_password: false,
         settings: {
@@ -146,9 +156,16 @@ export const createMeeting = asyncWrapper(async (req, res, next) => {
       const meeting = await Meeting.create({
         user: user._id,
         zoom_url: meetingResponse.data.join_url,
-        ...filterdData,
+        topic: filterdData.topic,
+        type: filterdData.type,
+        agenda: filterdData.agenda,
+        duration: filterdData.duration || 30,
+        start_time:
+          filterdData.type == 2
+            ? filterdData.start_time
+            : new Date().toISOString(),
       });
-      if (filterdData.type === 1) {
+      if (filterdData.type == 1) {
         res.status(201).json({
           message: "Meeting created successfully",
           meeting,

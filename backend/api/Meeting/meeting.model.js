@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
 import { emailPattern } from "../../utils/validation.js";
 
-const isStartTimeInFuture = (value) => {
-  if (value) {
+const isStartTimeInFuture = (value, type) => {
+  if (value && type == 2) {
     const currentTime = new Date();
     const startTime = new Date(value);
     return startTime >= currentTime;
+  } else if (type == 1) {
+    return true;
   }
   return false;
 };
@@ -20,9 +22,10 @@ const meetingSchema = new mongoose.Schema(
 
     start_time: {
       type: Date,
-      unique: true,
       validate: {
-        validator: isStartTimeInFuture,
+        validator(value) {
+          return isStartTimeInFuture(value, this.type);
+        },
         message: "Start time must be in the future",
       },
     },

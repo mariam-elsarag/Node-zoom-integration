@@ -53,19 +53,25 @@ const globalErrors = (err, req, res, next) => {
   let error = { ...err };
 
   if (process.env.NODE_ENV === "production") {
-    if (error?.message?.includes("Cast to ObjectId failed"))
-      error = handleInvalidId();
+    console.log(err.message.errors.start_time, "kkkk");
+    // if (error?.message?.includes("Cast to ObjectId failed")) {
+    //   error = handleInvalidId();
+    // }
     if (err.code === 11000) error = handleDublicateDbData(err);
     if (
       error?.name === "JsonWebTokenError" ||
       error?.message === "invalid signature"
     )
       error = handleJWTError();
+
     if (
       error?.errors?.email?.name === "ValidatorError" ||
       error?.errors?.password?.path === "password"
-    )
+    ) {
       error = handleValidationError(error) || error;
+    } else if (err.message.errors.start_time?.name === "ValidatorError") {
+      error = handleValidationError(error.message) || error;
+    }
     if (error.name === "TokenExpiredError") error = handleExpireJWTError();
 
     handleProducationErrors(error, res);
