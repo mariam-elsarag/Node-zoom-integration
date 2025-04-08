@@ -123,7 +123,6 @@ export const createMeeting = asyncWrapper(async (req, res, next) => {
         host_email: user.email,
         default_password: false,
         settings: {
-          allow_multiple_devices: true,
           join_before_host: true,
           host_video: true,
           participant_video: true,
@@ -131,9 +130,9 @@ export const createMeeting = asyncWrapper(async (req, res, next) => {
           enforce_login: false,
           approval_type: 0,
           allow_multiple_devices: true,
-          alternative_hosts_email_notification: false,
+          // alternative_hosts_email_notification: false,
           audio: "voip",
-          mute_upon_entry: false,
+          mute_upon_entry: true,
         },
       },
       {
