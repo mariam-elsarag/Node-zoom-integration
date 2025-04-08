@@ -2,7 +2,7 @@ import { useState } from "react";
 import { EyeOff, EyeOn } from "../../../assets/Icon";
 
 interface passwordType {
-  id: string;
+  id?: string;
   name?: string;
   value: string;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

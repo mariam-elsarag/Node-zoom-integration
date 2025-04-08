@@ -2,7 +2,7 @@ import { Control, Controller, FieldError } from "react-hook-form";
 import Password from "./Password";
 
 interface FormItemType {
-  id?: string | number;
+  id?: string;
   formType?: "input" | "textarea" | "password";
   fieldName?: string | undefined;
   validator?: any;
@@ -34,10 +34,10 @@ const Form: React.FC<FormProps> = ({ formList, control, errors, loading }) => {
       case "input":
         return (
           <input
-            key={item.id}
+            id={item.id}
             type={item.type || "text"}
             name={item.name || ""}
-            value={field.value}
+            value={field.value ?? ""}
             onChange={field.onChange}
             className={`input ${errorClass}`}
             placeholder={item.placeholder}
@@ -48,7 +48,7 @@ const Form: React.FC<FormProps> = ({ formList, control, errors, loading }) => {
           <Password
             id={item.id}
             name={item.name || ""}
-            value={field.value}
+            value={field.value ?? ""}
             handleChange={field.onChange}
             className={`input ${errorClass}`}
             placeholder={item.placeholder}
@@ -57,9 +57,9 @@ const Form: React.FC<FormProps> = ({ formList, control, errors, loading }) => {
       case "textarea":
         return (
           <textarea
-            key={item.id}
+            id={item.id}
             name={item.name || ""}
-            value={field.value}
+            value={field.value ?? ""}
             onChange={field.onChange}
             className={`input ${errorClass} resize-none !h-auto !min-h-[100px] `}
             placeholder={item.placeholder}

@@ -28,7 +28,7 @@ const Button: React.FC<buttonPropsType> = ({
   const base = `outline-none  w-full rounded-full font-normal text-base flex items-center justify-center gap-2 h-[44px] px-4  transation-all ease-in-out duration-300 cursor-pointer`;
   const styles = {
     primary: `${base} border-blue-200 bg-blue-200 text-white hover:bg-blue-100 `,
-    secondary: `${base} border-blue-800 bg-blue-800 text-white-80  `,
+    secondary: `${base} border-blue-800 bg-blue-800 text-white-80 hover:bg-[#333a59]  `,
     outline: `${base} border border-white/50 text-white  `,
     error: `${base} bg-red-700 text-white`,
   };

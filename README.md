@@ -16,6 +16,14 @@ This project contains both the **backend** and **frontend** components:
 - **Responsive Design**: Tailored for both desktop and mobile views.
 - **Automated Email Notifications**: Send email notifications using **Nodemailer** when the scheduled meeting time arrives, powered by **Agenda** for background task scheduling.
 
+## 🎥 Demo Preview
+
+Take a quick look at how the app works in action! From logging in to creating meetings — it's all here:
+
+<video width="100%" controls>
+  <source src="./assets/demo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 ## 📌 Tech Stack
 
 ### 🌐 Frontend:

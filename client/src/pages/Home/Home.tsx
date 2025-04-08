@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Hero from "./Hero";
 import Button from "../../components/ui/Button";
 import { CalendarIcon, PlusIcon } from "../../assets/Icon";
@@ -7,11 +7,26 @@ import Meeting_Card from "../meeting/Meeting_Card";
 import Dialog from "../../components/ui/Dialog";
 import Form from "../../components/ui/form/Form";
 import { useForm } from "react-hook-form";
+import axiosInstance from "../../services/axiosInstance";
+import { toast } from "react-toastify";
+import useGetPaginatedData from "../../hooks/useGetPaginatedData";
+import Empty from "../../components/ui/Empty";
+import useGetData from "../../hooks/useGetData";
 
+interface sendDataType {
+  topic: string;
+  agenda: string;
+  duration: number;
+  start_time: number;
+  type: number;
+}
 const Home = () => {
   const [visible, setVisible] = useState<boolean>(false);
   const [loading, setLoading] = useState(false);
   const [meetingType, setMeetingType] = useState<string | null>(null);
+
+  const { data, fetchData } = useGetData(`/api/meet/today`);
+
   // ___________________ use form ____________________
   const {
     control,
@@ -76,7 +91,6 @@ const Home = () => {
           placeholder: "Select Date & Time",
         }
       : null,
-
     {
       id: 5,
       formType: "textarea",
@@ -95,12 +109,42 @@ const Home = () => {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
+      const { topic, agenda, start_time } = data;
+      const sendData: sendDataType = {
+        topic,
+        agenda,
+        start_time:
+          meetingType === "meet"
+            ? new Date(new Date().getTime() + 20 * 60 * 1000).toISOString()
+            : start_time,
+        duration: 30,
+        type: meetingType === "meet" ? 1 : 2,
+      };
+
+      const response = await axiosInstance.post("/api/meet/zoom", sendData);
+
+      if (response?.status === 201) {
+        toast.success("Meeting created successfully");
+        setVisible(false);
+        reset();
+        if (response.data?.meeting) {
+          window.location.href = response.data.meeting.zoom_url;
+        }
+        fetchData();
+      }
     } catch (err) {
       console.log("error", err);
+      toast.error(err?.response.data.errors);
+      setVisible(false);
+      reset();
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <section className="flex flex-col gap-8">
       <Hero />
@@ -109,7 +153,17 @@ const Home = () => {
           <Card key={item?.id} data={item} />
         ))}
       </section>
-      <Meeting_Card />
+      {data?.length > 0 && (
+        <section className="grid gap-3.5">
+          <h3 className="text-2xl font-bold">Today’s Upcoming Meetings</h3>
+          <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {data?.map((item) => (
+              <Meeting_Card key={item?.meetingId} data={item} />
+            ))}
+          </section>
+        </section>
+      )}
+
       <Dialog
         header={
           meetingType === "schedule"
@@ -121,13 +175,18 @@ const Home = () => {
           setVisible(false);
         }}
       >
-        <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
-          <Form
-            formList={formList}
-            control={control}
-            errors={errors}
-            loading={loading}
-          />
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
+          <div className="grid gap-4">
+            <Form
+              formList={formList}
+              control={control}
+              errors={errors}
+              loading={loading}
+            />
+          </div>
+          <Button buttonType="submit" loading={loading} className="!w-full">
+            {meetingType === "schedule" ? "Schedule" : "Create"} Meeting
+          </Button>
         </form>
       </Dialog>
     </section>
