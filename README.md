@@ -20,7 +20,7 @@ This project contains both the **backend** and **frontend** components:
 
 Take a quick look at how the app works in action! From logging in to creating meetings — it's all here:
 
-![Video Demo](https://github.com/mariam-elsarag/Zoom-integration/tree/main/assets/Demo.gif)
+![Video Demo](https://raw.githubusercontent.com/mariam-elsarag/Zoom-integration/main/assets/Demo.gif)
 
 ## 📌 Tech Stack
 
