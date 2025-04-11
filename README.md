@@ -1,4 +1,4 @@
-# Zoom Integration
+# 📹 Zoom Integration
 
 ## 📋 Overview
 
@@ -9,6 +9,8 @@ This project contains both the **backend** and **frontend** components:
 - **Frontend**: A modern React app built with TypeScript, styled using Tailwind CSS, and provides a seamless user experience with the help of React-Toastify for notifications.
 - **Backend**: A robust Express server using MongoDB (Mongoose), JWT authentication, and Zoom OAuth integration.
 
+---
+
 ## ✨ Features
 
 - **User Authentication**: Log in via a regular account or using Google OAuth.
@@ -16,37 +18,54 @@ This project contains both the **backend** and **frontend** components:
 - **Responsive Design**: Tailored for both desktop and mobile views.
 - **Automated Email Notifications**: Send email notifications using **Nodemailer** when the scheduled meeting time arrives, powered by **Agenda** for background task scheduling.
 
+---
+
 ## 🎥 Demo Preview
 
 Take a quick look at how the app works in action! From logging in to creating meetings — it's all here:
 
 ![Video Demo](https://raw.githubusercontent.com/mariam-elsarag/Zoom-integration/main/assets/Demo.gif)
 
-## 📌 Tech Stack
+---
 
-### 🌐 Frontend:
+## 🛠️ Tech Stack
 
-- **React**
-- **TypeScript**
-- **Tailwind CSS**
-- **React-Toastify**
+### 🌐 Frontend
 
-### 💻 Backend:
+- Framework: **React**
+- Language: **TypeScript**
+- Styling: **Tailwind CSS**
+- Notifications: **React-Toastify**
 
-- **Express.js**
-- **MongoDB & Mongoose**
-- **Passport.js & Google OAuth2**
-- **JWT**
-- **Multer**
-- **Zoom API Integration**
-- **Nodemailer**
-- **Agenda**
+### 💻 Backend
 
-## 📚 API Documentation
+- Runtime: **Node.js**
+- Framework: **Express.js**
+- Database: **MongoDB** (with **Mongoose**)
+- Auth: **Passport.js** (with **Google OAuth2**), **JWT**
+- File Uploads: **Multer**
+- Emails: **Nodemailer**
+- Background Jobs: **Agenda**
+- 3rd Party Integration: **Zoom API**
+
+---
+
+## 📦 API Documentation
 
 You can access the full API documentation via Postman using the link below 👇:
 
 🔗 [View API Docs on Postman](https://documenter.getpostman.com/view/39898064/2sB2cU9hVn)
+
+---
+
+## 📋 Prerequisites
+
+- Node.js (vXX.X.X)
+- MongoDB (local or cloud, e.g., MongoDB Atlas)
+- A `.env` file with required configs
+- Optional: `nodemon` for development
+
+---
 
 ## 🧪 Environment Variables
 
@@ -78,31 +97,72 @@ ZOOM_REDIRECT_URI="http://localhost:8000/api/zoom/callback"
 JWT_SECRET_KEY=""
 JWT_EXPIRE_IN="15d"
 
-# sending email
+# Sending Email
 EMAIL_FROM=""
 EMAIL_USER=""
 EMAIL_PASSWORD=""
+```
+
+## ⚙️ Project Setup
+
+### 🧰 Backend Setup
+
+1- Navigate to the backend folder (if applicable), then install dependencies:
+
+```bash
+npm install
+```
+
+2- Run the backend server using the development script:
+
+```bash
+npm start
+```
+
+> ⚠️ Important: Make sure your .env file includes the correct MongoDB connection:
+
+```env
+DATABASE="your_mongo_connection_string"
+DATABASE_PASSWORD="your_password_here"
 
 ```
 
-## 🛠 Tech Setup
+Otherwise, the app will throw a database connection error.
 
-### 🚀 Running the Backend
+## 🔧 Installing nodemon Globally (Optional for Dev)
 
-To run the backend server, I used **nodemon** to automatically restart the server during development whenever file changes are made. Additionally, **nodemon** is configured to read environment variables from the `.env` file to manage different configurations for the backend.
+If nodemon is not installed globally, you can install it with:
 
-In the `package.json`, the following script is used:
+```bash
+npm install -g nodemon
+```
+
+The backend uses the following script in package.json:
 
 ```json
 "scripts": {
   "start": "nodemon --env-file .env ./server/server.js"
 }
+
 ```
 
-### 🔧 Installing **nodemon** Globally
+### 💻 Frontend Setup
 
-If **nodemon** is not installed globally on your machine, you can install it using the following command:
+1- Navigate to the frontend folder:
 
 ```bash
-npm install -g nodemon
+cd client
+```
+
+2- Install dependencies:
+
+```bash
+npm install
+```
+
+3- Run the frontend development server:
+
+```bash
+npm run dev
+
 ```
