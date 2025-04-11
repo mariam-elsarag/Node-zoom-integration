@@ -103,6 +103,18 @@ EMAIL_USER=""
 EMAIL_PASSWORD=""
 ```
 
+### ✅ Notes
+
+- If you set `NODE_ENV="development"`, you’ll see **detailed error messages** to help with debugging.
+- If you set `NODE_ENV="production"`, the app will only show **custom handled errors** via a global error middleware called `globalError`.
+- The **backend server** runs on port **8000** (`PORT=8000`).
+- The **frontend app** runs on **http://localhost:5173** by default.
+- Make sure your frontend `.env` contains this variable to correctly reach the backend:
+
+```env
+VITE_REACT_APP_BASE_URL=http://localhost:8000
+```
+
 ## ⚙️ Project Setup
 
 ### 🧰 Backend Setup
